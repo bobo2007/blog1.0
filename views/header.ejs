@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <h1><%= title %></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="/" title="主页">主页</a></li>
+                <% if(user) { %>
+                <li><a href="/post" title="发表">发表</a></li>
+                <li><a href="/logout" title="登出">登出</a></li>
+                <% } else{ %>
+                <li><a href="/login" title="主页">登录</a></li>
+                <li><a href="/reg" title="主页">注册</a></li>
+                <% } %>
+            </ul>
+        </nav>
+        <artical>
+            <% if(success){ %>
+                <div><%= success %></div>
+            <% } %>
+            <% if(error) { %>
+                <div><%= error %></div>
+            <% } %>
+
