@@ -1,8 +1,93 @@
+*{
+  margin:0;
+  padding:0;
+}
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+ul{
+  overflow:hidden;
+}
+ul li{
+  list-style: none;
+}
+.wrap{
+  width:1000px;
+  margin: 0 auto;
+}
+/*header*/
+.wrap header{
+  height:150px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+/*nav*/
+.wrap nav{
+  width:150px;
+  background-color: #666;
+  float:left;
+}
+.wrap nav ul{
+  overflow:hidden;
+}
+.wrap nav ul li{
+  width:150px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 20px;
+  text-align: center;
+  margin:5px auto;
+}
+/*artical*/
+.wrap artical{
+  width:840px;
+  float:left;
+  height:400px;
+  background-color: #ccc;
+  margin-left:10px;
+}
+/*login reg*/
+.loginbox{
+  width:300px;
+  margin: 50px auto;
+}
+
+.loginbox ul li{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float:left;
+}
+.loginbox input{
+  width:200px;
+  height:25px;
+  text-indent:10px;
+}
+.loginbox span{
+  width:60px;
+  height:25px;
+  font-size:15px;
+  line-height: 30px;
+  text-align: right;
+}
+.regbox span{
+  width:75px;
+}
+.loginbox input,.loginbox span{
+  float:left;
+}
+.loginbox input.logbtn{
+  text-indent: 0px;
+  width:100px;
+  height: 35px;
+  line-height: 25px;
+  margin-left:100px;
+}
+  
+
+
+
+
