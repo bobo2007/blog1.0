@@ -46,7 +46,7 @@ ul li{
 .wrap artical{
   width:840px;
   float:left;
-  height:400px;
+  /*height:400px;*/
   background-color: #ccc;
   margin-left:10px;
 }
@@ -86,7 +86,27 @@ ul li{
   line-height: 25px;
   margin-left:100px;
 }
-  
+/*post*/
+.postBox{
+  width:704px;
+  margin:35px auto;
+}
+.postBox p{
+  margin:10px auto;
+}
+.postBox textarea{
+  width:700px;
+  height:300px;
+}
+.postBox .postBtn{
+  width:120px;
+  margin:10px 290px;
+}
+
+
+
+
+
 
 
 
