@@ -19,12 +19,28 @@ ul li{
   width:1000px;
   margin: 0 auto;
 }
+.wrapBox{
+  width:704px;
+  margin:35px auto;
+}
+
 /*header*/
 .wrap header{
   height:150px;
   background-color: #ddd;
   margin-bottom: 10px;
 }
+.wrap header .hd-title{
+  text-align: center;
+  overflow:hidden;
+  height:150px;
+  line-height: 150px;
+}
+/*index*/
+.index-post p{
+  margin:6px 0;
+}
+
 /*nav*/
 .wrap nav{
   width:150px;
@@ -48,6 +64,14 @@ ul li{
   float:left;
   /*height:400px;*/
   background-color: #ccc;
+  margin-left:10px;
+  padding:0 30px;
+  box-sizing:border-box;
+}
+.editBox{
+  margin:7px 0;
+}
+.editBox span{
   margin-left:10px;
 }
 /*login reg*/
@@ -87,10 +111,7 @@ ul li{
   margin-left:100px;
 }
 /*post*/
-.postBox{
-  width:704px;
-  margin:35px auto;
-}
+
 .postBox p{
   margin:10px auto;
 }
@@ -101,6 +122,14 @@ ul li{
 .postBox .postBtn{
   width:120px;
   margin:10px 290px;
+}
+
+/*upload*/
+.uploadBox input{
+  margin:5px auto;
+}
+.uploadBox .uploadBtn{
+  width:150px;
 }
 
 

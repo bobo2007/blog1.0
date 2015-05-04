@@ -8,6 +8,7 @@ var setting = require('./setting');
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 
 var routes = require('./routes/index');
@@ -25,6 +26,12 @@ app.use(flash());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({
+  dest: './public/images',
+  rename: function(fieldname,filename){
+    return fieldname+filename+Date.now();
+  }
+}));
 app.use(cookieParser());
 app.use(session({
   secret: setting.cookieSecret,
