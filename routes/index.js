@@ -205,7 +205,7 @@ router.post('/edit/:name/:day/:title',checkLogin);
 router.post('/edit/:name/:day/:title',function(req,res){
     var currentUser = req.session.user;
     Post.update(currentUser.name,req.params.day,req.params.title,req.body.post,function(err){
-        var url ='/user/'+currentUser.name+'/'+req.params.day+'/'+req.params.title;
+        var url =encodeURI('/user/'+currentUser.name+'/'+req.params.day+'/'+req.params.title);
         if(err){
             req.flash('error',err);
             return res.redirect(url);//返回文章页
