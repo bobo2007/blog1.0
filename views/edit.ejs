@@ -3,7 +3,7 @@
         <form method="post">
             <p>标题：<input type="text" name="title" value="<%= post.title %>" /></p>
             <p>正文：</p>
-            <p><textarea name="post"  cols="20" rows="10" ><%= post.post %></textarea></p>
+            <p><textarea name="post"  cols="20" rows="10" ><%- post.post %></textarea></p>
             <input class='postBtn' type="submit" value="保存"/>
         </form>
     </div>

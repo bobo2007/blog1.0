@@ -132,6 +132,13 @@ ul li{
   width:150px;
 }
 
+/*comment*/
+.commentBox{
+  width:704px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid #999;
+}
 
 
 

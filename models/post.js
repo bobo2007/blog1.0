@@ -26,7 +26,8 @@ Post.prototype.save = function(callback){
         name: this.name,
         time: time,
         title: this.title,
-        post: this.post
+        post: this.post,
+        comments: []     //增加评论
     };
     //打开数据库
     mongodb.open(function(err,db){
