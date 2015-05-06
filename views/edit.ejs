@@ -2,6 +2,9 @@
     <div class="wrapBox postBox">
         <form method="post">
             <p>标题：<input type="text" name="title" value="<%= post.title %>" /></p>
+            <p>标签：<input class="tag" type="text" name="tag1" value="<%= post.tags[0] %>" disabled="disabled"/>
+                <input class="tag" type="text" name="tag1" value="<%= post.tags[1] %>" disabled="disabled"/>
+                <input class="tag" type="text" name="tag1" value="<%= post.tags[2] %>" disabled="disabled"/></p>
             <p>正文：</p>
             <p><textarea name="post"  cols="20" rows="10" ><%- post.post %></textarea></p>
             <input class='postBtn' type="submit" value="保存"/>

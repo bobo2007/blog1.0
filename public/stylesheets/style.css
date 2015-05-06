@@ -27,8 +27,9 @@ ul li{
 /*header*/
 .wrap header{
   height:150px;
-  background-color: #ddd;
+  background-color: #2ca6cb;
   margin-bottom: 10px;
+  box-shadow:2px 4px 5px rgba(3, 3, 3, 0.2);
 }
 .wrap header .hd-title{
   text-align: center;
@@ -91,14 +92,14 @@ ul li{
   text-indent:10px;
 }
 .loginbox span{
-  width:60px;
+  width:70px;
   height:25px;
   font-size:15px;
   line-height: 30px;
   text-align: right;
 }
 .regbox span{
-  width:75px;
+  width:80px;
 }
 .loginbox input,.loginbox span{
   float:left;
@@ -138,6 +139,23 @@ ul li{
   margin: 0 auto;
   padding-top: 20px;
   border-top: 1px solid #999;
+}
+
+/*tags*/
+.tags{
+  margin-left:5px;
+  width:80px;
+  height:20px;
+  font-size:12px;
+  text-indent: 3px;
+}
+.tag{
+  display: inline-block;
+  background-color: #dbdbdb;
+  margin: 0.3125em;
+  text-decoration: none;
+  font-size:12px;
+  padding:0.125em 0.4125em;
 }
 
 

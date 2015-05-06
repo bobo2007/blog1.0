@@ -1,0 +1,8 @@
+<div class="pageBox">
+    <% if(!isFirstPage){ %>
+        <span class="prepage"><a href="?p=<%= page-1 %>">上一页</a></span>
+    <% } %>
+    <% if(!isLastPage){ %>
+        <span class="nextpage"><a href="?p=<%= page+1 %>">下一页</a></span>
+    <% } %>
+</div>

@@ -4,11 +4,19 @@
         <p><a href="/user/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %> </a></p>
         <p class="post-info">
             作者：<a href="/user/<%= post.name %>"><%= post.name %></a>  |
-            日期：<%= post.time.minute %>
+            日期：<%= post.time.minute %>  |
+            标签：
+            <% post.tags.forEach(function(tag){ %>
+                <% if(tag){ %>
+                    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+                <% } %>
+            <% }) %>
         </p>
         <p><%- post.post %></p>
+        <p class="statistics">阅读：<%= post.pv %>  |  评论：<%= post.comments.length %></p>
     </div>
     <% }) %>
+<%- include paging %>
 <%- include footer %>
 
 
