@@ -3,6 +3,7 @@ var crypto = require('crypto');
 var Post = require('../models/post.js');
 var User = require('../models/user.js');
 var Comment = require('../models/comment.js');
+var console = require('console');
 var router = express.Router();
 
 /* GET home page. */
@@ -16,7 +17,7 @@ router.get('/', function(req, res) {
         }
         res.render('index', {
             title: '主页',//页面名称
-            user: req.session.user, //session data
+            user: req.session.user, //session data  为空？
             posts: posts,   //文章集合
             page: page,
             isFirstPage: (page-1) ==0,
@@ -67,8 +68,10 @@ router.post('/reg',function(req,res){
         req.flash('error',err);
         return res.redirect('/reg');
       }
-      req.session.user = user;//用户信息存入session
-      req.flash('success','注册成功');
+      //assert.equal(null,user);
+     // console.dir(user);
+      req.session.user = user;//用户信息存入session  user为空！！！
+      req.flash('success', '注册成功');
       res.redirect('/');
     });
   });
@@ -99,6 +102,7 @@ router.post('/login',function(req,res){
             return res.redirect('/login');
         }
         //都匹配，将用户信息存入session
+        //console.log(user);
         req.session.user = user;
         req.flash('success','登录成功');
         res.redirect('/');
@@ -191,8 +195,8 @@ router.get('/user/:name/:day/:title',function(req,res){
             user: req.session.user,//session data
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
-        })
-    })
+        });
+    });
 });
 //编辑页面
 router.get('/edit/:name/:day/:title',checkLogin);
@@ -308,6 +312,55 @@ router.get('/tags/:tag',function(req,res){
             error: req.flash('error').toString()
         });
     });
+});
+//search
+router.get('/search',function(req,res){
+    Post.search(req.query.keyword,function(err,posts){
+        if(err){
+            req.flash('error',err);
+            return res.redirect('/');
+        }
+        res.render('search',{
+            title: 'SEARCH' + req.query.keyword,
+            posts: posts,
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        });
+    });
+});
+//注册转载路由响应
+router.get('/reprint/:name/:day/:title',checkLogin);
+router.get('/reprint/:name/:day/:title',function(req,res){
+    Post.edit(req.params.name,req.params.day,req.params.title,function(err,post){
+        if(err){
+            req.flash('error',err);
+            return res.redirect('back');
+        }
+        var currentUser = req.session.user,
+            reprint_from = {
+                name: post.name,
+                day: post.time.day,
+                title: post.title
+            },
+            reprint_to = {
+                name: currentUser.name
+            };
+        Post.reprint(reprint_from,reprint_to,function(err,post){
+            if(err){
+                req.flash('error',err);
+                return res.redirect('back');
+            }
+            req.flash('success','转载成功');
+            //跳转到转载的页面
+            var url = encodeURI('/user/'+post.name+'/'+post.time.day+'/'+post.title);
+            res.redirect(url);
+        });
+    });
+});
+//添加404
+router.use(function(req,res){
+    res.render('404');
 });
 function checkNotLogin(req,res,next){
     if(req.session.user){

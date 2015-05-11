@@ -9,7 +9,7 @@
         <% if(user){ %>
             <p>姓名：<input type="text" name="name" value="<%=user.name %>"/></p>
             <p>邮箱：<input type="text" name="email" value="<%= user.email %>"/></p>
-            <p>网址：<input type="text" name="website" value="<%= user.name %>"/></p>
+            <p>网址：<input type="text" name="website" value="/user/<%= user.name %>"/></p>
         <% } else{ %>
             <p>姓名：<input type="text" name="name" /></p>
             <p>邮箱：<input type="text" name="email" /></p>

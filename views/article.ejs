@@ -6,6 +6,31 @@
                 <span><a href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
             </p>
         <% } %>
+        <!--添加转载-->
+        <% var flag = 1 %>
+        <!--若为已登录游客但非本文作者-->
+        <% if(user && (user.name!=post.name)){ %>
+            <!--为该文章的上一级作者-->
+            <% if((post.reprint_info.reprint_from != undefined) && (user.name == post.reprint_info.reprint_from.name)){ %>
+                <% flag = 0 %>
+            <% } %>
+            <!--若本文章被转载-->
+            <% if(post.reprint_info.reprint_to != undefined){ %>
+                <% post.reprint_info.reprint_to.forEach(function(reprint_to){ %>
+                    <!--判断本游客是否转载过本文-->
+                    <% if(user.name == reprint_to.name){ %>
+                        <% flag = 0 %>
+                    <% } %>
+                <% }) %>
+            <% } %>
+        <% }else{ %>
+        <!--未登录游客或本文作者-->
+            <% flag = 0 %>
+        <% } %>
+        <% if(flag){ %>
+            <p><span><a href="/reprint/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">转载</a></span></p>
+        <% } %>
+
         <p class="post-info">
             作者：<a href="/user/<%= post.name %>"><%= post.name %></a>  |
             日期：<%= post.time.minute %>  |
@@ -16,8 +41,21 @@
                 <% } %>
             <% }) %>
         </p>
+        <% if(post.reprint_info.reprint_from){ %>
+            <p><a href="/user/<%= post.reprint_info.reprint_from.name %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a></p>
+        <% } %>
         <p><%- post.post %></p>
-        <p class="statistics">阅读：<%= post.pv %>  |  评论：<%= post.comments.length %></p>
+        <p class="statistics">
+            阅读：<%= post.pv %>  |
+            评论：<%= post.comments.length %>  |
+            转载：
+            <% if(post.reprint_info.reprint_to){ %>
+                <%= post.reprint_info.reprint_to.length %>
+            <% }else{ %>
+                <%= 0 %>
+            <% } %>
+        </p>
+
     </div>
 <%- include comment %>
 <%- include footer %>

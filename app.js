@@ -38,7 +38,7 @@ app.use(session({
   name: setting.db,//cookie name
   resave: true,
   saveUninitialized: false,
-  cookie: {maxAge:1000*60*20},//2min
+  cookie: {maxAge:1000*60*20},//20min
   store: new MongoStore({
     db: setting.db
   })

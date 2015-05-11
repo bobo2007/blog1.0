@@ -21,6 +21,9 @@
     <div class="wrap">
         <header>
             <h1 class="hd-title"><%= title %></h1>
+            <% if(user){ %>
+                <p><span>当前用户：</span><%= user.name %></p>
+            <% } %>
         </header>
         <nav>
             <ul>
@@ -35,6 +38,9 @@
                 <li><a href="/login" title="主页">登录</a></li>
                 <li><a href="/reg" title="主页">注册</a></li>
                 <% } %>
+                <li>
+                    <form action="/search" method="get"><input type="text" name="keyword" placeholder="search" class="search"/></form>
+                </li>
             </ul>
         </nav>
         <artical>

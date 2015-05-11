@@ -34,8 +34,6 @@ ul li{
 .wrap header .hd-title{
   text-align: center;
   overflow:hidden;
-  height:150px;
-  line-height: 150px;
 }
 /*index*/
 .index-post p{
@@ -66,7 +64,7 @@ ul li{
   /*height:400px;*/
   background-color: #ccc;
   margin-left:10px;
-  padding:0 30px;
+  padding:0 30px 30px;
   box-sizing:border-box;
 }
 .editBox{
@@ -140,6 +138,9 @@ ul li{
   padding-top: 20px;
   border-top: 1px solid #999;
 }
+.commentBox .commentList{
+  margin-bottom: 20px;
+}
 
 /*tags*/
 .tags{
@@ -157,6 +158,7 @@ ul li{
   font-size:12px;
   padding:0.125em 0.4125em;
 }
+
 
 
 
